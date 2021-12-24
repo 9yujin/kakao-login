@@ -36,7 +36,14 @@ const Login = () => {
             image: loginData.userImage,
             phone: loginData.userPhone,
             wow: loginData.userWow,
+            jwt: loginData.jwt,
         });
+    };
+
+    const logout = () => {
+        setLogined(false);
+        context.setUser({ name: "", email: "", wow: "", image: "", phone: "" });
+        context.setKakao({ name: "", email: "", id: "", image: "" });
     };
 
     useEffect(() => {
@@ -122,7 +129,7 @@ const Login = () => {
                 </div>
             )}
             {signup && !logined && <Signup joinSucceed={joinSucceed} signin={signin} />}
-            {logined && <Mypage />}
+            {logined && <Mypage logout={logout} />}
         </div>
     );
 };

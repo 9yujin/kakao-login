@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import userContext from "../context";
 
-const Mypage = () => {
+const Mypage = ({ logout }) => {
     const context = useContext(userContext);
-    const userData = context.user;
-    console.log(userData);
+    const jwt = context.user.jwt.split(".");
+    console.log(jwt);
 
     return (
         <>
@@ -28,6 +28,12 @@ const Mypage = () => {
                 <div>{context.user.phone}</div>
                 <h3>와우회원</h3>
                 {context.user.wow ? <div>결제일</div> : <div>와우 회원이 아닙니다</div>}
+            </div>
+            <input type="button" value="로그아웃" style={{ margin: "20px" }} onClick={logout}></input>
+            <div style={{ fontSize: "10px", color: "gray" }}>
+                <p>{jwt[0]}.</p>
+                <p>{jwt[1]}.</p>
+                <p>{jwt[2]}</p>
             </div>
         </>
     );

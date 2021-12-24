@@ -117,3 +117,19 @@ form .form-inner input[type="submit"]:hover {
     background: rgb(136, 136, 136);
     color: white;
 }
+
+input[type="button"] {
+    display: inline-block;
+    padding: 10px 15px;
+    border-radius: 8px;
+    background-size: 200%;
+    background: #666;
+    color: #fee500;
+    cursor: pointer;
+    font-size: 13px;
+    border: none;
+}
+input[type="button"]:hover {
+    background: rgb(136, 136, 136);
+    color: white;
+}
