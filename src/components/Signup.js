@@ -20,7 +20,7 @@ const Signup = ({ joinSucceed, signin }) => {
         try {
             const response = await axios({
                 method: "POST",
-                url: `http://localhost:3000/app/users`,
+                url: `https://9yujin.shop/app/users`,
                 data: JSON.stringify(data),
                 headers: {
                     "Content-Type": `application/json`,

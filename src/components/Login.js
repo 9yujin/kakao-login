@@ -20,7 +20,7 @@ const Login = () => {
         console.log(token);
         const loginResult = await axios({
             method: "POST",
-            url: `http://localhost:3000/app/users/login`,
+            url: `https://9yujin.shop/app/users/login`,
             data: {
                 email: context.kakao.email,
                 password: String(context.kakao.id),
@@ -55,21 +55,24 @@ const Login = () => {
     useEffect(() => {
         const myAccount = async () => {
             try {
-                const response = await axios.get(`http://localhost:3000/app/users?email=${context.kakao.email}`);
+                const response = await axios.get(`https://9yujin.shop/app/users?email=${context.kakao.email}`);
                 console.log(response);
                 if (response.data.result.length == 0) {
                     setSignup(true);
                 } else {
                     //로그인
-
                     signin();
                 }
             } catch (err) {
                 console.error(err);
             }
         };
-        if (context.kakao.email) {
-            myAccount();
+        if (context.kakao.id) {
+            if (!context.kakao.email) {
+                alert("이메일 정보 제공 동의를 해주세요!!");
+            } else {
+                myAccount();
+            }
         }
     }, [context.kakao]);
 
@@ -79,7 +82,7 @@ const Login = () => {
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
                     <h1>카카오 로그인</h1>
                     <KakaoLogin
-                        token={"fa56968f0f3fbbad13f3656328dee767"}
+                        token={"자바스크립트 app key"}
                         onSuccess={(res) => {
                             console.log(res);
                             cookies.set("kakaoAccess", res.response.access_token, {
@@ -101,7 +104,7 @@ const Login = () => {
                         }}
                     />
                     <KakaoLogin
-                        token={"fa56968f0f3fbbad13f3656328dee767"}
+                        token={"자바스크립트 app key"}
                         onSuccess={(res) => {
                             console.log(res);
                             context.setKakao({
